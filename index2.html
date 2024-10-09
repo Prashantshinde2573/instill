@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+        <!-- <link rel="stylesheet" href="style.css"> -->
+
+    <style>
+        body {
+    min-height: fit-content;
+}
+.base-div {
+    width: 960px;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: "Inter", "Inter Placeholder", sans-serif;
+    color: #0f0e0e;
+
+    * {
+        margin: 0
+    }
+}
+
+.filter-div {
+    /* margin-top: -36px; */
+    margin-bottom: 56px;
+    width: 600px;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #FFFFFF;
+    border: 1px solid #00000014;
+    border-radius: 12px;
+
+    @media screen and (max-width: 767px) {
+        padding: 14px 12px;
+        flex-direction: column;
+        gap: 12px;
+        width: 350px;
+        max-width: 80%;
+    }
+}
+
+.terms-col {
+    width: 50%;
+    border-left: 1px solid #00000014;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: 767px) {
+        width: 100%;
+        border: none;
+        justify-content: start;
+    }
+}
+
+.users-col {
+    width: 55%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    @media screen and (max-width: 767px) {
+        margin-bottom: 12px;
+        width: 100%;
+        flex-direction: column;
+        align-items: start;
+        gap: 12;
+    }
+}
+.select-base {
+    position: relative;
+
+    @media screen and (max-width: 767px) {
+            width: 100%;
+    }
+}
+.option-base {
+    position: absolute;
+    left: 0;
+    bottom: -218px;
+    width: 146px;
+    background: #FFFFFF;
+    border: 1px solid #00000014;
+    border-radius: 6px;
+    overflow: hidden;
+    z-index: 9;
+    font-size: 14px;
+    display: none;
+
+    @media screen and (max-width: 767px) {
+            width: 100%;
+    }
+}
+.select-option {
+    padding: 12px;
+        border-bottom: 1px solid #00000014;
+        cursor: pointer;
+        /* background: ${(props) =>
+            props.selected === props.numb ? "#e8f4fd" : "#FFF"}; */
+        background: #FFFFFF;
+
+        &:last-child {
+                border: none;
+        }
+        @media screen and (max-width: 767px) {
+                width: 100%;
+        }
+}
+.select-option.selected {
+    background: #e8f4fd;
+}
+
+.filter-title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+    text-align: left;
+
+    @media screen and (max-width: 767px) {
+        font-weight: 500;
+    }
+}
+
+.toggle-div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.toggle-label {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+}
+
+.save-text {
+    margin-left: 4px;
+    padding: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+    color: #00721D;
+    background: #34C75933;
+    border-radius: 4px;
+}
+
+.toggle-base {
+    position: relative;
+    height: 25px;
+    width: 44px;
+    border-radius: 50px;
+    background: linear-gradient(107.22deg, #3AD0F8 0.53%, #2961F6 95.01%);
+    cursor: pointer;
+}
+
+.toggle {
+    position: absolute;
+    height: 21px;
+    width: 21px;
+    background: #FFF;
+    border-radius: 50px;
+    top: 2px;
+    left: 21px;
+    transition: all 0.2s ease-in-out;
+}
+.toggle.monthly {
+    left: 2px;
+}
+
+.user-select {
+    position: relative;
+    width: 124px;
+    padding: 9px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 6px;
+    border: 1px solid #E8EAF5;
+    cursor: pointer;
+    font-size: 14px;
+
+    @media screen and (max-width: 767px) {
+        width: 100%;
+    }
+}
+/* ============================================== */
+
+
+.main-card
+{
+    width: 880px;
+    display: flex;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    gap: 0px;
+    @media screen and (max-width: 767px){
+        flex-direction: column;
+        width: 100%;
+        gap: 16px;
+        align-items: center;
+        justify-content: center;
+    
+}
+
+
+}
+/* left side card start    ----------------------------- */
+.col1
+{
+    width: 400x;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    border-radius: 12px 0px 0px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    @media screen and (max-width: 767px){
+        width: 100%;
+        flex-direction: column;
+        gap: 16px;
+        border-radius: 12px;
+        
+    
+}
+}
+.top-row
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    gap: 24px;
+    padding: 32px;
+    background: linear-gradient(91.66deg, rgba(58, 208, 248, 0.2) 0.13%, rgba(41, 97, 246, 0.2) 100%);
+    border-top-left-radius: 12px;
+
+    @media screen and (max-width: 767px){
+        padding:20px;
+      
+        border-radius: 12px 12px 0px 0px;
+    
+}
+
+}
+.bottom-row
+{
+    display: flex;
+    flex-direction:column;
+    gap: 32px;
+    padding: 32px;
+    @media screen and (max-width: 767px){
+        padding:20px;
+      
+    
+}
+    
+}
+.price-section
+{
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+}
+.price-count
+{
+    display: block;
+    unicode-bidi: isolate;
+    font-family: sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 40px;
+    letter-spacing: -0.5px;
+}
+.price-text
+{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: -0.5px;
+    color: rgb(122, 129, 159);
+}
+
+.points
+{
+    padding: 0px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    
+}
+.point
+{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: -0.5px;
+    color: rgb(36, 37, 51);
+    position: relative;
+    width: fit-content;
+    @media screen and (max-width: 767px){
+      
+       justify-content: left;
+       align-items: start;
+    
+}
+}
+
+.cta 
+{
+    width: 100%;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: -0.5px;
+    color: rgb(255, 255, 255);
+    background: linear-gradient(107.22deg, rgb(58, 208, 248) 0.53%, rgb(41, 97, 246) 95.01%);
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+/* ============================== */
+
+.title 
+{
+    margin-bottom: 7px;
+    color: rgb(15, 14, 14);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: -0.5px;
+}
+.name
+{
+    border-bottom: 0.8px dashed rgb(122, 129, 159);
+}
+.desc {
+    color: rgb(15, 14, 14);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 21.6px;
+    letter-spacing: -0.5px;
+    text-align: left;
+}
+/* right side card start------------------------------ */
+.col2
+{
+    width: 480px;
+    background: rgb(15, 14, 14);
+    color: rgb(255, 255, 255);
+    position: relative;
+    border: none;
+    z-index: 0;
+    overflow: visible;
+
+    @media screen and (max-width: 767px){
+        width: 100%;
+        flex-direction: column;
+        border-radius: 12px;
+    
+}
+}
+.col2::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: calc(100% + 6px);
+    height: calc(100% + 6px);
+    animation-timeline: auto;
+    animation-range-start: normal;
+    animation-range-end: normal;
+    z-index: -1;
+    background: linear-gradient(91.66deg, rgb(58, 208, 248) 0.13%, rgb(41, 97, 246) 100%) 0% 0% / 1000%;
+    border-radius: 12px;
+    animation: 2s ease 0s infinite normal none running AnimationName;
+}
+.top-section
+{
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+    background: rgb(15, 14, 14);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 32px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    justify-content: left;
+    gap: 24px;
+    @media screen and (max-width: 767px){
+        padding:20px;
+      
+    
+}
+}
+.bottom-section
+{
+    background: rgb(15, 14, 14);
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    display: flex;
+    flex-direction:column;
+    gap: 32px;
+    padding: 32px;
+    @media screen and (max-width: 767px){
+        padding:20px;
+      
+    
+}
+    
+  
+}
+.whitetext
+{
+    color: rgb(255, 255, 255);
+}
+
+.bg 
+{
+    padding: 1px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: left;
+    background: linear-gradient(93.44deg, rgb(58, 208, 248) 19.66%, rgb(41, 97, 246) 52.84%);
+    border-radius: 10px;
+}
+.instill-flow
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    gap:8px;
+    @media screen and (max-width: 767px){
+        width: 100%;
+        flex-direction: column;
+        border-radius: 12px;
+        align-items: start;
+    
+}
+}
+.pill-div
+{
+    padding: 3px 8px;
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16.8px;
+    letter-spacing: -0.5px;
+    border-radius: 10px;
+    position: relative;
+    z-index: 0;
+    background: rgb(15, 14, 14);
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="base-div">
+        <div class="filter-div">
+            <div class="users-col">
+                <p class="filter-title">Number of users</p>
+                <div class="select-base">
+                    <div class="user-select">
+                        <span class="selected-option">1 - 250</span>
+                        <img src="https://framerusercontent.com/images/Q1BkTm6mBN20wl6zfz8G1wUWo.png" alt="select"
+                            width="24px">
+                    </div>
+                    <div class="option-base">
+                        <div class="select-option selected">1 - 250</div>
+                        <div class="select-option">251 - 400</div>
+                        <div class="select-option">401 - 750</div>
+                        <div class="select-option">751 - 1000</div>
+                        <div class="select-option">1000+</div>
+                    </div>
+                </div>
+            </div>
+            <div class="terms-col">
+                <div class="toggle-div">
+                    <p class="toggle-label">Monthly</p>
+                    <div class="toggle-base">
+                        <div class="toggle"></div>
+                    </div>
+                    <p class="toggle-label">Annual</p>
+                    <p class="save-text">Save 20%</p>
+                </div>
+            </div>
+        </div>
+<!-- main card start here and first card will also start------------------------------------------------------ -->
+
+       <div class="main-card">
+        <div class="col1">
+            <div class="top-row">
+               <img class="icon"
+                src="https://framerusercontent.com/images/CZ27OiPH3oaRpZjv7S083yces.png"
+                alt="foundation module" width="80">
+                <div>
+                    <h3 class="title">Foundation</h3>
+                    <p class="desc">A system of record for your culture</p>
+                </div>
+            </div>
+            <div class="bottom-row">
+                <div class="price-section">
+                    <div>
+                        <p class="price-count">$0</p>
+                    </div>
+                    <div>
+                        <p class="price-text">free forever</p>
+                    </div>
+                </div>
+                <div index="0" class="">
+                    <div>
+                        <ul class="points">
+                            <li class="point"><img src="https://framerusercontent.com/images/61y3CJJmkO3tiUlpAYCQDUM3qn0.png"
+                                    alt="point tick" width="12px">
+                                <p class="name" itemid="1">Culture + Values Codification</p>
+                            </li>
+                            <li class="point"><img src="https://framerusercontent.com/images/61y3CJJmkO3tiUlpAYCQDUM3qn0.png"
+                                    alt="point tick" width="12px">
+                                <p class="name" itemid="2">AI Culture Design Assistant</p>
+                            </li>
+                            <li class="point"><img src="https://framerusercontent.com/images/61y3CJJmkO3tiUlpAYCQDUM3qn0.png"
+                                    alt="point tick" width="12px">
+                                <p class="name" itemid="3">Employee Culture Onboarding</p>
+                            </li>
+                            <li class="point"><img src="https://framerusercontent.com/images/61y3CJJmkO3tiUlpAYCQDUM3qn0.png"
+                                    alt="point tick" width="12px">
+                                <p class="name" itemid="4">Company Culture Profile</p>
+                            </li>
+                            <li class="point"><img src="https://framerusercontent.com/images/61y3CJJmkO3tiUlpAYCQDUM3qn0.png"
+                                    alt="point tick" width="12px">
+                                <p class="name" itemid="5">Employee Profiles</p>
+                            </li>
+                            <li class="point"><img src="https://framerusercontent.com/images/61y3CJJmkO3tiUlpAYCQDUM3qn0.png"
+                                    alt="point tick" width="12px">
+                                <p class="name" itemid="6">Slack + Teams Integration</p>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                 </div>
+                <button class="cta">Get Started</button>
+
+            </div>
+
+        </div>
+
+<!-- Second card start      -->
+
+        <div class="col2">
+            <div class="top-section">
+                    <div>
+                        <img src="https://framerusercontent.com/images/yYgpGK5JWlo5A3p6Ed15pf5xg.png" width="80">
+
+                    </div>
+                    
+                    <div>
+                        <h3 class="title whitetext">Culture OS</h3>
+                        <p class="desc whitetext">Access to all of Instill's culture tools</p>
+                    </div>
+                </div>
+
+
+<!-- second section bottom part start -->
+
+                <div class=" bottom-row bottom-section">
+                    <div class="price-section">
+                        <div>
+                            <p class="price-count whitetext">$25</p>
+                        </div>
+                        <div>
+                            <p class="price-text whitetext">per person / month</p>
+                        </div>
+                    </div>
+                    <div index="0" class="bottom-row" style="padding:0px;">
+                        <div>
+                            <ul class="points">
+                                <li class="point"><img src="https://framerusercontent.com/images/61y3CJJmkO3tiUlpAYCQDUM3qn0.png"
+                                        alt="point tick" width="12px">
+                                        <div class="instill-flow">
+                                            <p class="name whitetext" itemid="1">Instill Flow</p>
+                                            <div class="bg">
+                                                <div class="pill-div">AI Powered Meeting Analysis</div>
+
+                                            </div>
+
+                                        </div>
+                                   
+                                </li>
+                                <li class="point"><img src="https://framerusercontent.com/images/61y3CJJmkO3tiUlpAYCQDUM3qn0.png"
+                                        alt="point tick" width="12px">
+                                    <p class="name whitetext" itemid="2">Instill Culture Index</p>
+                                </li>
+                                <li class="point"><img src="https://framerusercontent.com/images/61y3CJJmkO3tiUlpAYCQDUM3qn0.png"
+                                        alt="point tick" width="12px">
+                                    <p class="name whitetext" itemid="3">Personality Assessments</p>
+                                </li>
+                                <li class="point"><img src="https://framerusercontent.com/images/61y3CJJmkO3tiUlpAYCQDUM3qn0.png"
+                                        alt="point tick" width="12px">
+                                    <p class="name whitetext" itemid="4">Culture Vital Sign Assessments</p>
+                                </li>
+                                <li class="point"><img src="https://framerusercontent.com/images/61y3CJJmkO3tiUlpAYCQDUM3qn0.png"
+                                        alt="point tick" width="12px">
+                                    <p class="name whitetext" itemid="5">Values Alignment Scores</p>
+                                </li>
+                                <li class="point"><img src="https://framerusercontent.com/images/61y3CJJmkO3tiUlpAYCQDUM3qn0.png"
+                                        alt="point tick" width="12px">
+                                    <p class="name whitetext" itemid="6">Custom Culture KPI</p>
+                                </li>
+                                <li class="point"><img src="https://framerusercontent.com/images/61y3CJJmkO3tiUlpAYCQDUM3qn0.png"
+                                    alt="point tick" width="12px">
+                                    <p class="name whitetext" itemid="6">Hiring Assessments + Candidate Calibration</p>
+                            </li>
+                            <li class="point"><img src="https://framerusercontent.com/images/61y3CJJmkO3tiUlpAYCQDUM3qn0.png"
+                                alt="point tick" width="12px">
+                                <p class="name whitetext" itemid="6">Optimal Team Formation (Coming soon)</p>
+                        </li>
+                            </ul>
+                        </div>
+                        
+                     </div>
+                    <button class="cta">Try for free</button>
+    
+                </div>
+
+            </div>
+<!--second card end--------------  -->
+
+        </div>
+    </div>
+            
+                   
+           
+
+
+    <!-- JAVASCRIPT -->
+    <script src="index.js">
+       
+    </script>
+</body>
+
+</html>
